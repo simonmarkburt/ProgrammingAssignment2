@@ -48,23 +48,23 @@ makeCacheMatrix <- function( mtx = matrix() ) {
 cacheSolve <- function(mtx,...) {
   
   # Return a matrix that is the inverse of 'mtx'
-  mtx <- x$getInverse()
+  inv <- mtx$getInverse()
   
   # Return the inverse if it is already computed
-  if( !is.null(mtx) ) {
+  if( !is.null(inv) ) {
     message("getting cached data")
-    return(mtx)
+    return(inv)
   }
   
   # Get the matrix from the object
   data <- mtx$get()
   
   # Calculate the inverse using solve functio
-  mtx <- solve(data,...)
+  inv <- solve(data,...)
   
   # Set the inverse to the object
-  x$setInverse(mtx)
+  mtx$setInverse(inv)
   
   # Return the matrix
-  mtx
+  inv
 }
